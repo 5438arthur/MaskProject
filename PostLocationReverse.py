@@ -13,6 +13,7 @@ Created on Sat Feb  8 00:43:06 2020
 
 @author: arthuryang
 """
+import re
 #test
 #桃園市['八德區']
 #Out[23]: '334'
@@ -478,15 +479,29 @@ Created on Sat Feb  8 00:43:06 2020
 '金門縣':金門縣, 
 '連江縣':連江縣 }
 
-locate = input('請輸入 ')
-if '縣' in locate :
-    locate1 = locate.split('縣')[0] +'縣'
-    locate2 = locate.split('縣')[1]
-elif '市' in locate:
-    locate1 = locate.split('市')[0] +'市'
-    locate2 = locate.split('市')[1]
-else:
-    print('error')
 
-print (縣市[locate1][locate2])
+
+zipcode = input('請輸入郵遞區號 ')
+def get_key (key, value):
+    return [k for k, v in key.items() if v == value]
+
+for count in range (0,len(縣市)):   #以郵遞區號，在所有縣市中查詢鄉鎮市區，並把鄉鎮市區存成location2
+    if (get_key(eval(list(縣市.keys())[count]),zipcode)) != [] :
+        location2 = str(get_key(eval(list(縣市.keys())[count]),zipcode))  #鄉鎮市區
+        location2 = re.split("\['|\']",location2)[1]
+        location1 = list(縣市.keys())[count] #縣市
+        
+
+        
+print(location1,location2)
+
+#print (,zipcode))    
+
+
+
+
+
+
+
+
 

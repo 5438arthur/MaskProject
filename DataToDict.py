@@ -15,18 +15,36 @@ r = requests.get ('https://raw.githubusercontent.com/kiang/pharmacies/master/raw
 #print(r.text)
 #'\n' in r.text
 
-lenall = len(r.text.split('\n')) - 2
+lenall = len(r.text.split('\n')) - 2 #全部去前後（最後一行空白）
 
-#for row in range (1,lenall+1):  #1~lenall(3144)
-#    for column in range (0,6):    #0~5
-#        print(r.text.split(',')[column],'\n')
-
-
-
+"""
+#測試抓取
 colcount=0
 for rowcount in range (1,6):  #1~lenall(3144)
     for column in range (0,7):    
-        print(re.split(',|\n',r.text)[colcount])
-        #print(r.text.split(',')[colcount],'/')
+        print(re.split(',|\n',r.text)[colcount])  #原print(r.text.split(',')[colcount],'/') 效果不佳，改為用re
         colcount = colcount+1
     print('\n')
+"""
+dict1={} #縣市字典
+dict2={}
+
+colcount=0
+for rowcount in range (1,6):  #先取五筆
+    # print(re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount])))
+    if re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0] not in dict1: #縣市不在縣市字典中執行
+        dict1[re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0]] = re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0]
+    #if re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0] in dict1:
+        
+        
+    
+    
+    
+    #for column in range (0,7):    
+    #    print(re.split(',|\n',r.text)[colcount])  #原print(r.text.split(',')[colcount],'/') 效果不佳，改為用re
+    #    colcount = colcount+1
+    #print('\n')
+    
+    
+    
+    
