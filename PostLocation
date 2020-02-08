@@ -480,4 +480,4 @@ elif '市' in locate:
 else:
     print('error')
 
-print (縣市[locate1][locate2])
+print (縣市[locate1][locate2]) #dict1[key1][key2]

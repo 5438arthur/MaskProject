@@ -33,10 +33,11 @@ colcount=0
 for rowcount in range (1,6):  #先取五筆
     # print(re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount])))
     if re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0] not in dict1: #縣市不在縣市字典中執行
-        dict1[re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0]] = re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0]
+        dict1[re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0]] = re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0] #建立縣市索引
+    dict1[re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0]] = dict1.update(re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[1])
     #if re.split('縣|市|鄉|區',(re.split(',|\n',r.text)[2+7*rowcount]))[0] in dict1:
         
-        
+#最一開始建立城市資料字典      
     
     
     
