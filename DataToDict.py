@@ -24,8 +24,9 @@ lenall = len(r.text.split('\n')) - 2
 
 
 colcount=0
-for rowcount in range (1,6):  
+for rowcount in range (1,6):  #1~lenall(3144)
     for column in range (0,7):    
-        print(r.text.split(',')[colcount],'/')
+        print(re.split(',|\n',r.text)[colcount])
+        #print(r.text.split(',')[colcount],'/')
         colcount = colcount+1
-    #print('\n')
+    print('\n')
