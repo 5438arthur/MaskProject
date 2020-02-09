@@ -18,13 +18,14 @@ def GetInfo():
     global allinfo 
     r = requests.get ('https://raw.githubusercontent.com/kiang/pharmacies/master/raw/maskdata.csv?fbclid=IwAR0pbpNYAtC4juY8ewEuYq6NyFBUcfLX65_qjxYiqqIl6SFn0xi9VP4DhUI')
     allinfo = list(re.split(',|\n|\r',r.text))
+    return('GetDone')
     
-def FindInfo():
+def FindInfo(locateIn):
     global lenall
     #總共要抓的數量
     lenall = int((len(allinfo)-1)/8)-2 #全部去前後（最後一行空白）
    
-    locate = '桃園市八德區' # input (' ')
+    locate = locateIn # input (' ')
     
     
     for rowcount in range (1,lenall):  #先取五筆
@@ -37,6 +38,6 @@ def FindInfo():
             print('小孩口罩剩餘',allinfo[5+7*rowcount],'\n')
             
     
-GetInfo()
-FindInfo()
-print(lenall)
+#GetInfo()
+#FindInfo()
+#print(lenall)

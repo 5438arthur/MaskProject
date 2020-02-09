@@ -481,19 +481,24 @@ import re
 
 
 
-zipcode = input('請輸入郵遞區號 ')
-def get_key (key, value):
+
+
+def get_key (key, value):   
     return [k for k, v in key.items() if v == value]
 
-for count in range (0,len(縣市)):   #以郵遞區號，在所有縣市中查詢鄉鎮市區，並把鄉鎮市區存成location2
-    if (get_key(eval(list(縣市.keys())[count]),zipcode)) != [] :
-        location2 = str(get_key(eval(list(縣市.keys())[count]),zipcode))  #鄉鎮市區
-        location2 = re.split("\['|\']",location2)[1]
-        location1 = list(縣市.keys())[count] #縣市
+def ZipcodeToLocation(zipget):
+    #zipcode = input('請輸入郵遞區號 ')
+    zipcode = zipget
+    for count in range (0,len(縣市)):   #以郵遞區號，在所有縣市中查詢鄉鎮市區，並把鄉鎮市區存成location2
+        if (get_key(eval(list(縣市.keys())[count]),zipcode)) != [] :
+            location2 = str(get_key(eval(list(縣市.keys())[count]),zipcode))  #鄉鎮市區
+            location2 = re.split("\['|\']",location2)[1]
+            location1 = list(縣市.keys())[count] #縣市
+    return(location1,location2)
         
 
         
-print(location1,location2)
+#print(location1,location2)
 
 #print (,zipcode))    
 
