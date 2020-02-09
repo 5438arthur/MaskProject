@@ -38,6 +38,6 @@ def FindInfo(locateIn):
             print('小孩口罩剩餘',allinfo[5+7*rowcount],'\n')
             
     
-#GetInfo()
-#FindInfo()
-#print(lenall)
+GetInfo()
+FindInfo('桃園市八德區')
+print(lenall)
