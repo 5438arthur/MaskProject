@@ -6,20 +6,8 @@ Created on Sat Feb  8 02:42:20 2020
 @author: arthuryang
 """
 
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Feb  8 00:43:06 2020
-
-@author: arthuryang
-"""
 import re
-#test
-#桃園市['八德區']
-#Out[23]: '334'
 
-#新竹市	300
-#嘉義市	600
 
 臺北市 = {
 '中正區':'100',
@@ -479,7 +467,9 @@ import re
 '金門縣':金門縣, 
 '連江縣':連江縣 }
 
-
+#未創建字典，以if else來判斷
+#新竹市	300
+#嘉義市	600
 
 
 
@@ -487,20 +477,24 @@ def get_key (key, value):
     return [k for k, v in key.items() if v == value]
 
 def ZipcodeToLocation(zipget):
-    #zipcode = input('請輸入郵遞區號 ')
     zipcode = zipget
-    for count in range (0,len(縣市)):   #以郵遞區號，在所有縣市中查詢鄉鎮市區，並把鄉鎮市區存成location2
-        if (get_key(eval(list(縣市.keys())[count]),zipcode)) != [] :
-            location2 = str(get_key(eval(list(縣市.keys())[count]),zipcode))  #鄉鎮市區
-            location2 = re.split("\['|\']",location2)[1]
-            location1 = list(縣市.keys())[count] #縣市
-    return(location1,location2)
+    if zipcode == '300':
+        location1 = '新竹市'
+        location2 = ''
+        return(location1,location2)
+    elif zipcode == '600':
+        location1 = '嘉義市'
+        location2 = ''
+        return(location1,location2)    
+    else:
+        for count in range (0,len(縣市)):   #以郵遞區號，在'縣市'字典中查詢鄉鎮市區，並把鄉鎮市區存成location2
+            if (get_key(eval(list(縣市.keys())[count]),zipcode)) != [] :
+                location2 = str(get_key(eval(list(縣市.keys())[count]),zipcode))  #鄉鎮市區
+                location2 = re.split("\['|\']",location2)[1]
+                location1 = list(縣市.keys())[count] #縣市
+        return(location1,location2)
         
-
-        
-#print(location1,location2)
-
-#print (,zipcode))    
+   
 
 
 
