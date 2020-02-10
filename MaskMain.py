@@ -6,15 +6,14 @@ Created on Thu Feb  6 22:24:29 2020
 @author: arthuryang
 """
 
+#此為穩定版
+
 import PostLocationReverse
 import DataToDict6
-
 
  
 #抓所有口罩資料
 DataToDict6.GetInfo() 
-
-
 
 
 #郵遞區號轉位置
